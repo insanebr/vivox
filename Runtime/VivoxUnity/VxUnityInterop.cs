@@ -43,7 +43,12 @@ namespace Unity.Services.Vivox
             }
         }
 
-        void OnApplicationQuit()
+        void Start()
+        {
+            Application.quitting += OnQuit;
+        }
+
+        void OnQuit()
         {
 #if !UNITY_INCLUDE_TESTS
             quitting = true;
